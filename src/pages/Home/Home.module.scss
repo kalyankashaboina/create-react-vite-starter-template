@@ -1,0 +1,29 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  &__title {
+    color: $primary-color;
+    font-size: clamp(1.5rem, 5vw, 2.5rem); // Responsive font size
+    margin-bottom: 0.5rem;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  &__countValue {
+    font-size: 2rem;
+    font-weight: bold;
+    min-width: 50px;
+  }
+}

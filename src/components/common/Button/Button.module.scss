@@ -1,0 +1,21 @@
+.button {
+  @include button-base;
+  background-color: $primary-color;
+  color: #232323;
+  font-weight: bold;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+
+  // Example of a secondary variant
+  &Secondary {
+    @extend .button; // Inherit all styles from .button
+    background-color: #a9a9a9;
+    color: white;
+
+    &:hover {
+      background-color: darken(#a9a9a9, 10%);
+    }
+  }
+}
