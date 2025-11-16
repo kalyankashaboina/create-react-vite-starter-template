@@ -1,55 +1,52 @@
 import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import tseslint from 'typescript-eslint';
 import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
-import { defineConfig, globalIgnores } from 'eslint/config';
 
-export default defineConfig([
-  globalIgnores(['dist', 'node_modules']),
-
+export default tseslint.config(
+  // Global ignores for folders like dist and node_modules
   {
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: 'module',
-      globals: globals.browser,
-      parser: tseslint.parser, // Use TS-ESLint parser
-      parserOptions: {
-        project: './tsconfig.json', // If you want type-aware rules
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
+    ignores: ['dist', 'node_modules'],
+  },
+
+  // 1. Base ESLint recommended rules
+  js.configs.recommended,
+
+  // 2. Spread the TypeScript recommended rules
+  ...tseslint.configs.recommended,
+
+  // 3. React Hooks recommended rules
+  reactHooks.configs.flat.recommended,
+
+  // 4. Prettier config to disable conflicting style rules (must come before your custom rules)
+  prettierConfig,
+
+  // 5. Your custom project configuration
+  {
+    files: ['**/*.{ts,tsx,js,jsx}'],
     plugins: {
-      '@typescript-eslint': tseslint,
-      'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       prettier: prettier,
     },
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.es2021,
+      },
+      // This is the key change to fix the "does not include this file" error
+      parserOptions: {
+        project: './tsconfig.eslint.json', // Use the new ESLint-specific tsconfig
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
     rules: {
-      ...reactHooks.configs.flat.recommended.rules,
+      // Your specific rules can override the ones from the configs above
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-      'prettier/prettier': 'error', // Run prettier as ESLint rule
-      // You can also override some TS rules here, e.g.:
+      'prettier/prettier': 'error', // Report Prettier issues as ESLint errors
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     },
   },
-
-  // Add Prettier config last to override other formatting-related rules
-  {
-    plugins: {
-      prettier: prettier,
-    },
-    rules: {
-      ...prettierConfig.rules,
-    },
-  },
-]);
+);

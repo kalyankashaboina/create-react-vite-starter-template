@@ -4,8 +4,6 @@ import styles from './Home.module.scss';
 import { FaRocket, FaShieldAlt, FaCode, FaCogs, FaPaintBrush, FaGithub } from 'react-icons/fa';
 
 const Home: React.FC = () => {
-  const test = "double quotes should be single yup"; 
-
   return (
     <main className={styles.home}>
       {/* Hero Section */}
