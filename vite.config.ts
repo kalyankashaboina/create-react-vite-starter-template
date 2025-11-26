@@ -37,4 +37,27 @@ export default defineConfig({
       localsConvention: 'camelCase',
     },
   },
+  build: {
+    // Automatic code splitting strategy
+    rollupOptions: {
+      output: {
+        // Split vendor libraries into separate chunk
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom', '@reduxjs/toolkit', 'react-redux'],
+          store: ['src/store/store.ts', 'src/store/slices/counterSlice.ts'],
+        },
+        // Generate chunk filename pattern for better caching
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+      },
+    },
+    // Optimize chunk size
+    chunkSizeWarningLimit: 500,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console logs in production
+      },
+    },
+  },
 });

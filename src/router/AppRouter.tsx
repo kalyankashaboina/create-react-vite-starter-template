@@ -5,7 +5,7 @@ const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      {/* Add other application routes here */}
+      {/* Add other application routes here - they will be automatically code split by Vite */}
     </Routes>
   );
 };

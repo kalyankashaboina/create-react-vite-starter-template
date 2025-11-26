@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint .",
+    "lint:styles": "stylelint src/**/*.scss",
+    "lint:fix": "eslint . --fix && npm run lint:styles -- --fix",
     "format": "prettier --write .",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -45,6 +47,10 @@
     "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "sass": "^1.94.0",
+    "stylelint": "^16.6.1",
+    "stylelint-config-recess-order": "^5.0.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "terser": "^5.44.1",
     "ts-jest": "^29.4.5",
     "ts-node": "^10.9.2",
     "typescript": "~5.9.3",
@@ -55,6 +61,9 @@
     "*.{ts,tsx,js,jsx}": [
       "eslint --fix"
     ],
-    "*.{json,md,scss,css}": "prettier --write"
+    "*.scss": [
+      "stylelint --fix"
+    ],
+    "*.{json,md,css}": "prettier --write"
   }
 }
