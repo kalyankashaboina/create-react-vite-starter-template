@@ -1,7 +1,7 @@
 # Vite + React + TypeScript: Professional Starter Template
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![Code Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+![Code Coverage](https://codecov.io/gh/kalyankashaboina/create-react-vite-starter-template/branch/master/graph/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
 
