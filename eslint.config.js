@@ -9,7 +9,7 @@ import prettierConfig from 'eslint-config-prettier';
 export default tseslint.config(
   // Global ignores for folders like dist and node_modules
   {
-    ignores: ['dist', 'node_modules'],
+    ignores: ['dist', 'node_modules', 'coverage', 'eslint.config.js'],
   },
 
   // 1. Base ESLint recommended rules
@@ -38,7 +38,7 @@ export default tseslint.config(
       },
       // This is the key change to fix the "does not include this file" error
       parserOptions: {
-        project: './tsconfig.eslint.json', // Use the new ESLint-specific tsconfig
+        project: ['./tsconfig.eslint.json'], // Ensure the correct tsconfig is used
         tsconfigRootDir: import.meta.dirname,
       },
     },
