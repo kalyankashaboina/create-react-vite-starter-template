@@ -2,5 +2,12 @@
   // Inherit all the settings from your main tsconfig.json
   "extends": "./tsconfig.json",
 
-  "include": ["src", "vite.config.ts", "jest.config.ts", "jest.setup.ts"]
+  "include": [
+    "src",
+    "vite.base.config.ts",
+    "vite.local.config.ts",
+    "vite.prod.config.ts",
+    "jest.config.ts",
+    "jest.setup.ts"
+  ]
 }

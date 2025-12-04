@@ -4,15 +4,15 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "vite --config vite.local.config.ts",
+    "build": "vite build --config vite.prod.config.ts",
     "lint": "eslint .",
     "lint:styles": "stylelint src/**/*.scss",
     "lint:fix": "eslint . --fix && npm run lint:styles -- --fix",
     "format": "prettier --write .",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "preview": "vite preview",
+    "preview": "vite preview --config vite.prod.config.ts",
     "prepare": "husky install"
   },
   "dependencies": {
