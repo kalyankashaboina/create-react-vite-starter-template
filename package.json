@@ -1,5 +1,5 @@
 {
-  "name": "my-react-app",
+  "name": "my-react-vite-template",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -7,8 +7,7 @@
     "dev": "vite --config vite.local.config.ts",
     "build": "vite build --config vite.prod.config.ts",
     "lint": "eslint .",
-    "lint:styles": "stylelint src/**/*.scss",
-    "lint:fix": "eslint . --fix && npm run lint:styles -- --fix",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -47,9 +46,6 @@
     "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
     "sass": "^1.94.0",
-    "stylelint": "^16.6.1",
-    "stylelint-config-recess-order": "^5.0.1",
-    "stylelint-config-standard-scss": "^13.1.0",
     "terser": "^5.44.1",
     "ts-jest": "^29.4.5",
     "ts-node": "^10.9.2",
@@ -61,9 +57,6 @@
     "*.{ts,tsx,js,jsx}": [
       "eslint --fix"
     ],
-    "*.scss": [
-      "stylelint --fix"
-    ],
-    "*.{json,md,css}": "prettier --write"
+    "*.{json,md}": "prettier --write"
   }
 }
